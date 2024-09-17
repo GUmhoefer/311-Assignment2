@@ -11,4 +11,4 @@ class OleloNode:
         self.tree_height = 1  # Stores the height this node's tree
 
     def __str__(self):
-        return f"OleloNode('Phrase in Olelo Hawaiʻi:\n'{self.phrase_olelo}, '\n','Phrase in English:\n'{self.phrase_english}, '\nExplanation in Olelo Hawaiʻi:\n',{self.exp_olelo}, '\nExplanation in English:\n', {self.exp_english})"
+        return f"Phrase in Olelo Hawaiʻi:\n'{self.phrase_olelo}, '\n','Phrase in English:\n'{self.phrase_english}, '\nExplanation in Olelo Hawaiʻi:\n',{self.exp_olelo}, '\nExplanation in English:\n', {self.exp_english}"
