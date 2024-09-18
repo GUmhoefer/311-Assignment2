@@ -1,6 +1,7 @@
 """
 OleloNode Class
 Author: Gregor Umhoefer
+Date: 9/17/2024
 Description: This class stores the phrases, translations, and descriptions for
              a node used in the red black tree database. It also stores pointers
              to the node's left and right children, as well as its parent.
