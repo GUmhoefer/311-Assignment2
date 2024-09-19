@@ -3,7 +3,7 @@ import string
 
 class OleloTree:
     def __init__(self):
-        self.NIL = onode("NIL", "NIL", "NIL", "NIL", 'black')
+        self.NIL = onode(None, None, None, None, 'black')
         self.root = self.NIL
 
         # We may not need these, I'm going to try to implement a sorted list in each node
@@ -67,11 +67,6 @@ class OleloTree:
         # Creates a new node with phrases and explanations
         new_node = onode(hphrase, ephrase, hexplain, eexplain)
 
-        # Sets new node's left and right children to NIL
-        new_node.left = self.NIL
-        new_node.right = self.NIL
-
-
         # Sets x to the current node to compare new node to, and y to parent of new node
         x = self.root
         y = self.NIL
@@ -103,16 +98,15 @@ class OleloTree:
         else:
             y.right = new_node
 
-    
         self._insert_fixup(new_node)
         
 
     def _insert_fixup(self, z):
-        #print(f"z: {z.phrase_olelo}, z.parent: {z.parent.phrase_olelo}, z.parent.parent: {z.parent.parent.phrase_olelo}")
-        while z.parent != self.NIL and z.parent.color == 'red':
+        
+        while z.parent.color == 'red':
             # If the new node's parent is a left child
             if z.parent == z.parent.parent.left: # If new node's parent and uncle are red
-                y = z.parent.parent.right  # Sets y to the right uncle of new node\
+                y = z.parent.parent.right  # Sets y to the right uncle of new node
                 if y.color == 'red':
                     z.parent.color = 'black'
                     y.color = 'black'
@@ -127,8 +121,6 @@ class OleloTree:
                     self._r_rotate(z.parent.parent)
             else: # If the new node's parent is a right child
                 y = z.parent.parent.left
-                print(f"left uncle y is null?")
-                print(y)
                 if y.color == 'red':
                     z.parent.color = 'black'
                     y.color = 'black'
@@ -141,7 +133,6 @@ class OleloTree:
                     z.parent.color = 'black'
                     z.parent.parent.color = 'red'
                     self._l_rotate(z.parent.parent)
-        self.root.color = 'black'
 
     def first(self, x):
         while x.left != self.NIL:
@@ -154,7 +145,36 @@ class OleloTree:
         return x
 
     def successor(self, phrase):
-        pass
+        # Step 1: Search for the node with the matching phrase
+        current = self
+        while current is not None:
+            if phrase < ' '.join(current.phrase_olelo): 
+                current = current.left
+            elif phrase > ' '.join(current.phrase_olelo):
+                current = current.right
+            else:
+                break  # Found the node
+
+        if current is None:
+            return None  # Phrase not found in the tree
+
+        # Step 2: If the node has a right child, find the minimum in the right subtree
+        if current.right is not None:
+            current = current.right
+            
+            while current.left is not None:
+                current = current.left
+            return current
+        
+        # Step 3: If no right child, find the lowest ancestor for which the node is in the left subtree
+        parent = current.parent
+        while parent is not None and current == parent.right:
+            current = parent
+            parent = parent.parent
+        
+        return parent
+        
+        
 
     def predecessor(self, phrase):
         pass
@@ -169,12 +189,6 @@ class OleloTree:
         pass
 
     def in_order(self):
-        self._in_order(self.root)
-
-    def _in_order(self, node):
-        if node != self.NIL:
-            self._in_order(node.left)
-            print(node)
-            self._in_order(node.right)
+        pass
 
 
