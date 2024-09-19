@@ -91,8 +91,11 @@ class OleloNode:
 
         return words
     
-    def binary_search(self, word):
-        pass
+    def olelo_search(self, word):
+        begin = 0
+        end = len(self.olelo_wordlist) - 1
+        mid = 0
+
         
 
  
