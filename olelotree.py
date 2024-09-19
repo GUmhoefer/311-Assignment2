@@ -3,7 +3,7 @@ import string
 
 class OleloTree:
     def __init__(self):
-        self.NIL = onode(None, None, None, None, 'black')
+        self.NIL = onode("NIL", "NIL", "NIL", "NIL", 'black')
         self.root = self.NIL
 
         # We may not need these, I'm going to try to implement a sorted list in each node
@@ -67,6 +67,11 @@ class OleloTree:
         # Creates a new node with phrases and explanations
         new_node = onode(hphrase, ephrase, hexplain, eexplain)
 
+        # Sets new node's left and right children to NIL
+        new_node.left = self.NIL
+        new_node.right = self.NIL
+
+
         # Sets x to the current node to compare new node to, and y to parent of new node
         x = self.root
         y = self.NIL
@@ -98,15 +103,16 @@ class OleloTree:
         else:
             y.right = new_node
 
+    
         self._insert_fixup(new_node)
         
 
     def _insert_fixup(self, z):
-        
-        while z.parent.color == 'red':
+        #print(f"z: {z.phrase_olelo}, z.parent: {z.parent.phrase_olelo}, z.parent.parent: {z.parent.parent.phrase_olelo}")
+        while z.parent != self.NIL and z.parent.color == 'red':
             # If the new node's parent is a left child
             if z.parent == z.parent.parent.left: # If new node's parent and uncle are red
-                y = z.parent.parent.right  # Sets y to the right uncle of new node
+                y = z.parent.parent.right  # Sets y to the right uncle of new node\
                 if y.color == 'red':
                     z.parent.color = 'black'
                     y.color = 'black'
@@ -121,6 +127,8 @@ class OleloTree:
                     self._r_rotate(z.parent.parent)
             else: # If the new node's parent is a right child
                 y = z.parent.parent.left
+                print(f"left uncle y is null?")
+                print(y)
                 if y.color == 'red':
                     z.parent.color = 'black'
                     y.color = 'black'
@@ -133,6 +141,7 @@ class OleloTree:
                     z.parent.color = 'black'
                     z.parent.parent.color = 'red'
                     self._l_rotate(z.parent.parent)
+        self.root.color = 'black'
 
     def first(self, x):
         while x.left != self.NIL:
@@ -160,6 +169,12 @@ class OleloTree:
         pass
 
     def in_order(self):
-        pass
+        self._in_order(self.root)
+
+    def _in_order(self, node):
+        if node != self.NIL:
+            self._in_order(node.left)
+            print(node)
+            self._in_order(node.right)
 
 

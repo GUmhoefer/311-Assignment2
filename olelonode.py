@@ -12,7 +12,7 @@ import string
 class OleloNode:
     def __init__(self, phrase_olelo, phrase_english, exp_olelo, exp_english, color = 'red'):
 
-        if (phrase_olelo != None and phrase_english != None):
+        if (phrase_olelo != "NIL" and phrase_english != "NIL"):
             self.phrase_olelo = phrase_olelo.split()
             self.phrase_english = phrase_english.split()
             self.olelo_wordlist = [word.strip(string.punctuation) for word in phrase_olelo.split()]
