@@ -54,14 +54,17 @@ class OleloNode:
         n_l = mid - begin + 1
         n_r = end - mid
 
+        # Creates two arrays for the left and right lists
         left = [0] * n_l
         right = [0] * n_r
 
+        # Fills the left and right arrays with the words from the original list
         for i in range(0, n_l):
             left[i] = words[begin + i]
         for j in range(0, n_r):
             right[j] = words[mid + j + 1]
         
+        # Sets start indices for left, right, and original lists
         i = 0
         j = 0
         k = begin
