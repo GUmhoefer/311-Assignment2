@@ -156,11 +156,11 @@ class OleloTree:
     # Successor method coded by Brendan Kuwabara
     def successor(self, phrase):
         # Step 1: Search for the node with the matching phrase
-        current = self
+        current = self.root
         while current is not None:
-            if phrase < ' '.join(current.phrase): 
+            if phrase < ' '.join(current.phrase_olelo): 
                 current = current.left
-            elif phrase > ' '.join(current.phrase):
+            elif phrase > ' '.join(current.phrase_olelo):
                 current = current.right
             else:
                 break  # Found the node
@@ -187,11 +187,11 @@ class OleloTree:
     # predecessor method coded by Brendan Kuwabara
     def predecessor(self, phrase):
         # Step 1: Search for the node with the matching phrase
-        current = self
+        current = self.root
         while current is not None:
-            if phrase < ' '.join(current.phrase):  
+            if phrase < ' '.join(current.phrase_olelo):  
                 current = current.left
-            elif phrase > ' '.join(current.phrase):
+            elif phrase > ' '.join(current.phrase_olelo):
                 current = current.right
             else:
                 break  # Found the node
