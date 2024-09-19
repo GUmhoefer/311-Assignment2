@@ -10,7 +10,7 @@ Description: This class stores the phrases, translations, and descriptions for
 import string
 
 class OleloNode:
-    def __init__(self, phrase_olelo, phrase_english, exp_olelo, exp_english, color = 'black'):
+    def __init__(self, phrase_olelo, phrase_english, exp_olelo, exp_english, color = 'red'):
 
         if (phrase_olelo != None and phrase_english != None):
             self.phrase_olelo = phrase_olelo.split()
