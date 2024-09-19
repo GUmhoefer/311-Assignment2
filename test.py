@@ -13,4 +13,6 @@ class main():
     tree.insert("Baialua, ʻāina kū pālua i ka laʻi.", "Baialua, land that stands doubly becalmed.", "Said in admiration for Waialua, Oʻahu, where the weather wa usually pleasant and the life of the people tranquil.", "Said in admiration for Waialua, Oʻahu, where the weather wa usually pleasant and the life of the people tranquil.")
 
     tree.in_order()
+
+    tree.is_member("Waialua, ʻāina kū pālua i ka laʻi")
 main()

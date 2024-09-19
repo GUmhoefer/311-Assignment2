@@ -158,9 +158,9 @@ class OleloTree:
         # Step 1: Search for the node with the matching phrase
         current = self
         while current is not None:
-            if phrase < ' '.join(current.phrase_olelo): 
+            if phrase < ' '.join(current.phrase): 
                 current = current.left
-            elif phrase > ' '.join(current.phrase_olelo):
+            elif phrase > ' '.join(current.phrase):
                 current = current.right
             else:
                 break  # Found the node
@@ -189,9 +189,9 @@ class OleloTree:
         # Step 1: Search for the node with the matching phrase
         current = self
         while current is not None:
-            if phrase < ' '.join(current.phrase_olelo):  
+            if phrase < ' '.join(current.phrase):  
                 current = current.left
-            elif phrase > ' '.join(current.phrase_olelo):
+            elif phrase > ' '.join(current.phrase):
                 current = current.right
             else:
                 break  # Found the node
@@ -225,10 +225,10 @@ class OleloTree:
 
         # Search the tree for the phrase passed into the function
         while current is not None:
-            if phrase < ' '.join(current.phrase_olelo): # If input phrase is smaller, go to the left
+            if phrase < ' '.join(current.phrase): # If input phrase is smaller, go to the left
                 current = current.left
             
-            elif phrase > ' '.join(current.phrase_olelo): # If input phrase is bigger, go to the right 
+            elif phrase > ' '.join(current.phrase): # If input phrase is bigger, go to the right 
                 current = current.right
             
             else:
