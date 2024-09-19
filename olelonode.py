@@ -87,8 +87,6 @@ class OleloNode:
             k += 1
 
         return words
+    
 
-
-
-
-
+ 

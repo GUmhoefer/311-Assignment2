@@ -219,14 +219,14 @@ class OleloTree:
     # If the phrase is present, the function returns true, if the phrase is not present, it will return false
     # is_member method coded by Brendan Kuwabara
     def is_member(self, phrase):
-
+        current = self.root
         # Search the tree for the phrase passed into the function
-        while self is not None:
-            if phrase < ' '.join(self.phrase): # If input phrase is smaller, go to the left
-                self = self.left
+        while current is not None:
+            if phrase < ' '.join(current.phrase_olelo): # If input phrase is smaller, go to the left
+                current = current.left
             
-            elif phrase > ' '.join(self.phrase): # If input phrase is bigger, go to the right 
-                self = self.right
+            elif phrase > ' '.join(current.phrase_olelo): # If input phrase is bigger, go to the right 
+                current = current.right
             
             else:
                 return True #If the phrase matches the current node, return true because the node is a member

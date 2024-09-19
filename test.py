@@ -14,5 +14,6 @@ class main():
 
     tree.in_order()
 
-    tree.is_member("Waialua, ʻāina kū pālua i ka laʻi")
+    result = tree.is_member("Waialua, ʻāina kū pālua i ka laʻi.")
+    print(result)
 main()
