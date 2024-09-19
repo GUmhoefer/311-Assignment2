@@ -174,7 +174,8 @@ class OleloTree:
     def _in_order(self, node):
         if node != self.NIL:
             self._in_order(node.left)
-            print(node)
+            print(node.olelo_wordlist)
+            print(node.english_wordlist)
             self._in_order(node.right)
 
 
