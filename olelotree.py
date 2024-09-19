@@ -169,13 +169,13 @@ class OleloTree:
 
         # Step 2: If the node has a right child, find the minimum in the right subtree
         if current.right is not None:
-            current = current.right
+            current = current.right # Setting the current to the right node to search the right subtree
             
-            while current.left is not None:
+            while current.left is not None: # accessing the minimum value in the right subtree
                 current = current.left
             return current
         
-        # Step 3: If no right child, find the lowest ancestor for which the node is in the left subtree
+        # Step 3: If there is no right child, find the lowest ancestor for which the node is in the left subtree
         parent = current.parent
         while parent is not None and current == parent.right:
             current = parent
