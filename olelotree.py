@@ -153,6 +153,7 @@ class OleloTree:
             x = x.right
         return x
 
+    # Successor method coded by Brendan Kuwabara
     def successor(self, phrase):
         # Step 1: Search for the node with the matching phrase
         current = self.root
@@ -185,6 +186,7 @@ class OleloTree:
         else:
             return parent
 
+    # predecessor method coded by Brendan Kuwabara
     def predecessor(self, phrase):
         # Step 1: Search for the node with the matching phrase
         current = self.root
@@ -218,8 +220,23 @@ class OleloTree:
         else:
             return parent
 
+    # is_member is a function that takes a node and a phrase, then searches the red and black tree to see if the phrase is present
+    # If the phrase is present, the function returns true, if the phrase is not present, it will return false
+    # is_member method coded by Brendan Kuwabara
     def is_member(self, phrase):
-        pass
+        current = self.root
+        # Search the tree for the phrase passed into the function
+        while current is not None:
+            if phrase < ' '.join(current.phrase_olelo): # If input phrase is smaller, go to the left
+                current = current.left
+            
+            elif phrase > ' '.join(current.phrase_olelo): # If input phrase is bigger, go to the right 
+                current = current.right
+            
+            else:
+                return True #If the phrase matches the current node, return true because the node is a member
+        
+        return False # If a node is not found with the phrase, then it is not a member of the tree
 
     def mehua(self, word):
         pass
