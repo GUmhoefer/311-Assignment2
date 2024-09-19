@@ -184,7 +184,34 @@ class OleloTree:
         return parent
 
     def predecessor(self, phrase):
-        pass
+        # Step 1: Search for the node with the matching phrase
+        current = self
+        while current is not None:
+            if phrase < ' '.join(current.phrase_olelo):  
+                current = current.left
+            elif phrase > ' '.join(current.phrase_olelo):
+                current = current.right
+            else:
+                break  # Found the node
+
+        if current is None:
+            return None  # Phrase not found in the tree
+
+        # Step 2: If the node has a left child, find the maximum in the left subtree
+        if current.left is not None:
+            current = current.left
+            while current.right is not None:
+                current = current.right
+            return current
+
+        
+        # Step 3: If no left child, find the lowest ancestor for which the node is in the right subtree
+        parent = current.parent
+        while parent is not None and current == parent.left:
+            current = parent
+            parent = parent.parent
+        
+        return parent
 
     def is_member(self, phrase):
         pass
