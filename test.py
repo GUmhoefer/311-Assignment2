@@ -14,6 +14,14 @@ class main():
 
     tree.in_order()
 
-    result = tree.is_member("Waialua, ʻāina kū pālua i ka laʻi.")
+    result = tree.is_member("Waialua, ʻāina kū pālua i ka laʻi.") # is_member is working properly 
+    result2 = tree.is_member("Hoʻokahi nō lā o ka malihini.") # is_member is working properly 
+    result3 = tree.is_member("Suprcalifragilisticexpialidocious") # is_member returns false when a phrase not in the tree is passed 
+
     print(result)
+    print(result2)
+    print(result3)
+
+    predecessor = tree.predecessor("Baialua, ʻāina kū pālua i ka laʻi.") # returning NIL at the moment, might have to add more nodes in the tree
+    print(predecessor)
 main()
