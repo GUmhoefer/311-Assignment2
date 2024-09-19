@@ -15,6 +15,8 @@ class OleloNode:
         if (phrase_olelo != None and phrase_english != None):
             self.phrase_olelo = phrase_olelo.split()
             self.phrase_english = phrase_english.split()
+            self.olelo_wordlist = [word.strip(string.punctuation) for word in phrase_olelo.split()]
+            self.english_wordlist = [word.strip(string.punctuation) for word in phrase_english.split()]
         else:
             self.phrase_olelo = phrase_olelo
             self.phrase_english = phrase_english
