@@ -17,6 +17,8 @@ class OleloNode:
             self.phrase_english = phrase_english.split()
             self.olelo_wordlist = [word.strip(string.punctuation) for word in phrase_olelo.split()]
             self.english_wordlist = [word.strip(string.punctuation) for word in phrase_english.split()]
+            self.olelo_wordlist = self.sort_words(self.olelo_wordlist, 0, (len(self.olelo_wordlist) - 1))
+            self.english_wordlist = self.sort_words(self.english_wordlist, 0, (len(self.english_wordlist) - 1))
         else:
             self.phrase_olelo = phrase_olelo
             self.phrase_english = phrase_english
@@ -34,3 +36,59 @@ class OleloNode:
         f"\n\nPhrase in English:\n{' '.join(self.phrase_english)}\n"
         f"\n\nExplanation in Olelo Hawaiʻi:\n{self.exp_olelo}\n"
         f"\n\nExplanation in English:\n{self.exp_english}\n"
+
+
+    # Uses merge sort to sort words alphabetically
+    def sort_words(self, words, begin, end):
+        if begin >= end:
+            # Base case if the list has 1 or fewer elements
+            return words
+        mid = (begin + end) // 2 # Finds the middle of the list, rounded down
+        self.sort_words(words, begin, mid) # Recursively splits the left list
+        self.sort_words(words, mid + 1, end) # Recursively splits the right list
+
+        # Merges the left and right list
+        return self.merge(words, begin, mid, end)
+
+    def merge(self, words, begin, mid, end):
+        n_l = mid - begin + 1
+        n_r = end - mid
+
+        left = [0] * n_l
+        right = [0] * n_r
+
+        for i in range(0, n_l):
+            left[i] = words[begin + i]
+        for j in range(0, n_r):
+            right[j] = words[mid + j + 1]
+        
+        i = 0
+        j = 0
+        k = begin
+
+        while i < n_l and j < n_r:
+            if left[i] <= right[j]:
+                words[k] = left[i] # Adds the left word to the list if it is less than right word
+                i += 1
+            else:
+                words[k] = right[j]
+                j += 1
+            k += 1
+
+        # After one of the L or R lists is empty, adds the rest of the other list to words
+        while i < n_l:
+            words[k] = left[i]
+            i += 1
+            k += 1
+        
+        while j < n_r:
+            words[k] = right[j]
+            j += 1
+            k += 1
+
+        return words
+
+
+
+
+
