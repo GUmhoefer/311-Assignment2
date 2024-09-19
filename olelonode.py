@@ -91,5 +91,8 @@ class OleloNode:
 
         return words
     
+    def binary_search(self, word):
+        pass
+        
 
  
