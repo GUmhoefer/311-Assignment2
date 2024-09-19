@@ -11,9 +11,13 @@ import string
 
 class OleloNode:
     def __init__(self, phrase_olelo, phrase_english, exp_olelo, exp_english, color = 'black'):
-        self.phrase_olelo = phrase_olelo.split()
-        #self.phrase_olelo = [word.strip(string.punctuation) for word in phrase_olelo.split()]
-        self.phrase_english = phrase_english.split()
+
+        if (phrase_olelo != None and phrase_english != None):
+            self.phrase_olelo = phrase_olelo.split()
+            self.phrase_english = phrase_english.split()
+        else:
+            self.phrase_olelo = phrase_olelo
+            self.phrase_english = phrase_english
         self.exp_olelo = exp_olelo
         self.exp_english = exp_english
 
@@ -24,4 +28,7 @@ class OleloNode:
         self.color = color # Color for red black tree
 
     def __str__(self):
-        return f"Phrase in Olelo Hawaiʻi:\n{' '.join(self.phrase_olelo)}\nPhrase in English:\n{' '.join(self.phrase_english)}\nExplanation in Olelo Hawaiʻi:\n{self.exp_olelo}\nExplanation in English:\n{self.exp_english}"
+        return f"Phrase in Olelo Hawaiʻi:\n{' '.join(self.phrase_olelo)}\n"
+        f"\n\nPhrase in English:\n{' '.join(self.phrase_english)}\n"
+        f"\n\nExplanation in Olelo Hawaiʻi:\n{self.exp_olelo}\n"
+        f"\n\nExplanation in English:\n{self.exp_english}\n"
