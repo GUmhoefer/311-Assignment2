@@ -154,7 +154,34 @@ class OleloTree:
         return x
 
     def successor(self, phrase):
-        pass
+        # Step 1: Search for the node with the matching phrase
+        current = self
+        while current is not None:
+            if phrase < ' '.join(current.phrase_olelo): 
+                current = current.left
+            elif phrase > ' '.join(current.phrase_olelo):
+                current = current.right
+            else:
+                break  # Found the node
+
+        if current is None:
+            return None  # Phrase not found in the tree
+
+        # Step 2: If the node has a right child, find the minimum in the right subtree
+        if current.right is not None:
+            current = current.right
+            
+            while current.left is not None:
+                current = current.left
+            return current
+        
+        # Step 3: If no right child, find the lowest ancestor for which the node is in the left subtree
+        parent = current.parent
+        while parent is not None and current == parent.right:
+            current = parent
+            parent = parent.parent
+        
+        return parent
 
     def predecessor(self, phrase):
         pass
