@@ -26,4 +26,9 @@ class main():
 
     predecessor = tree.predecessor("Baialua, ʻāina kū pālua i ka laʻi.") # returning NIL at the moment, might have to add more nodes in the tree
     print(predecessor)
+    print(tree.root)
+    print(tree.predecessor("Hoʻokahi nō lā o ka malihini."))
+    print(tree.successor("Hoʻokahi nō lā o ka malihini."))
+    print(tree.successor("Baialua, ʻāina kū pālua i ka laʻi."))
+    print(tree.predecessor("Waialua, ʻāina kū pālua i ka laʻi."))
 main()
