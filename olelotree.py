@@ -2,6 +2,8 @@ from olelonode import OleloNode as onode
 import string
 
 class OleloTree:
+
+    # Constructor, _l_rotate, _r_rotate coded by Gregor Umhoefer
     def __init__(self):
         self.NIL = onode(None, None, None, None, 'black')
         self.root = self.NIL
