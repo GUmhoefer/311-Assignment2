@@ -31,4 +31,13 @@ class main():
     print(tree.successor("Hoʻokahi nō lā o ka malihini."))
     print(tree.successor("Baialua, ʻāina kū pālua i ka laʻi."))
     print(tree.predecessor("Waialua, ʻāina kū pālua i ka laʻi."))
+
+    print("Search for English word: becalmed")
+    print(node.english_search("becalmed"))
+    print("Search for Hawaiian word: Waialua")
+    print(node.olelo_search("Waialua"))
+    print("Search for English word: ka")
+    print(node.english_search("ka"))
+    print("Search for Hawaiian word: ka")
+    print(node.olelo_search("ka"))
 main()

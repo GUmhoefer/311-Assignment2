@@ -3,14 +3,8 @@ import string
 
 class OleloTree:
     def __init__(self):
-        self.NIL = onode("NIL", "NIL", "NIL", "NIL", 'black')
+        self.NIL = onode(None, None, None, None, 'black')
         self.root = self.NIL
-
-        # We may not need these, I'm going to try to implement a sorted list in each node
-        # so we can do a binary search on that list when searching for phrases based on a
-        # word in the phrase.
-        self.olelo_wordlist = {}
-        self.english_wordlist = {}
 
     def _l_rotate(self, x):
         y = x.right # Sets y as x's right subtree
@@ -47,24 +41,6 @@ class OleloTree:
 
     # Insert method coded by Gregor Umhoefer
     def insert(self, hphrase, ephrase, hexplain, eexplain):
-        # Splits the words words in the each phrase and removes punctuation
-        # hawaiian_words = [word.strip(string.punctuation) for word in hphrase.split()]
-        # english_words = [word.strip(string.punctuation) for word in ephrase.split()]
-
-        # # Adds the words to a the word list dictionaries, with the values as
-        # # in the dictionary being the phrases that contain that word for rapid lookup.
-        # # This is done for both the Hawaiian and English phrases.
-        # for hword in hawaiian_words:
-        #     if hword not in self.olelo_wordlist:
-        #         self.olelo_wordlist[hword] = []
-        #     self.olelo_wordlist[hword].append((hphrase, ephrase))
-
-        # for eword in english_words:
-        #     if eword not in self.english_wordlist:
-        #         self.english_wordlist[eword] = []
-        #     self.english_wordlist[eword].append((hphrase, ephrase))
-
-        # Creates a new node with phrases and explanations
         new_node = onode(hphrase, ephrase, hexplain, eexplain)
 
         # Sets new node's left and right children to NIL
@@ -108,11 +84,10 @@ class OleloTree:
         
 
     def _insert_fixup(self, z):
-        #print(f"z: {z.phrase_olelo}, z.parent: {z.parent.phrase_olelo}, z.parent.parent: {z.parent.parent.phrase_olelo}")
         while z.parent != self.NIL and z.parent.color == 'red':
             # If the new node's parent is a left child
             if z.parent == z.parent.parent.left: # If new node's parent and uncle are red
-                y = z.parent.parent.right  # Sets y to the right uncle of new node\
+                y = z.parent.parent.right  # Sets y to the right uncle of new node
                 if y.color == 'red':
                     z.parent.color = 'black'
                     y.color = 'black'
@@ -157,10 +132,18 @@ class OleloTree:
     def successor(self, phrase):
         # Step 1: Search for the node with the matching phrase
         current = self.root
+        # while current != self.NIL:
+        #     if phrase < current.phrase_olelo: 
+        #         current = current.left
+        #     elif phrase > current.phrase_olelo:
+        #         current = current.right
+        #     else:
+        #         break  # Found the node
+
         while current != self.NIL:
-            if phrase < ' '.join(current.phrase_olelo): 
+            if phrase < current.phrase_olelo: 
                 current = current.left
-            elif phrase > ' '.join(current.phrase_olelo):
+            elif phrase > current.phrase_olelo:
                 current = current.right
             else:
                 break  # Found the node
@@ -191,9 +174,9 @@ class OleloTree:
         # Step 1: Search for the node with the matching phrase
         current = self.root
         while current != self.NIL:
-            if phrase < ' '.join(current.phrase_olelo):  
+            if phrase < current.phrase_olelo:  
                 current = current.left
-            elif phrase > ' '.join(current.phrase_olelo):
+            elif phrase > current.phrase_olelo:
                 current = current.right
             else:
                 break  # Found the node
@@ -226,11 +209,11 @@ class OleloTree:
     def is_member(self, phrase):
         current = self.root
         # Search the tree for the phrase passed into the function
-        while current is not None:
-            if phrase < ' '.join(current.phrase_olelo): # If input phrase is smaller, go to the left
+        while current != self.NIL:
+            if phrase < current.phrase_olelo: # If input phrase is smaller, go to the left
                 current = current.left
             
-            elif phrase > ' '.join(current.phrase_olelo): # If input phrase is bigger, go to the right 
+            elif phrase > current.phrase_olelo: # If input phrase is bigger, go to the right 
                 current = current.right
             
             else:
