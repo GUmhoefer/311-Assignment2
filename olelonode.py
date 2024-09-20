@@ -118,7 +118,7 @@ class OleloNode:
         # Returns false if the word is not in list
         return False
 
-        def english_search(self, word):
+    def english_search(self, word):
         # Binary search for specific word
         # Sets the start, middle, and end indices for the search array
         start = 0
