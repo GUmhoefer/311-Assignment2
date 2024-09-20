@@ -24,7 +24,7 @@ class main():
     print(result2)
     print(result3)
 
-    predecessor = tree.predecessor("Baialua, ʻāina kū pālua i ka laʻi.") # returning NIL at the moment, might have to add more nodes in the tree
+    predecessor = tree.predecessor("Baialua, ʻāina kū pālua i ka laʻi.")
     print(predecessor)
     print(tree.root)
     print(tree.predecessor("Hoʻokahi nō lā o ka malihini."))
@@ -40,4 +40,7 @@ class main():
     print(node.english_search("ka"))
     print("Search for Hawaiian word: ka")
     print(node.olelo_search("ka"))
+
+    print(node.olelo_wordlist)
+    print(node.english_wordlist)
 main()

@@ -82,48 +82,64 @@ class OleloTree:
     
         self._insert_fixup(new_node)
         
+    # _insert_fixup method coded buncle Gregor Umhoefer
+    def _insert_fixup(self, node):
+        while node.parent != self.NIL and node.parent.color == 'red':
+            # If the  node's parent is a left child
+            if node.parent == node.parent.parent.left: # If  node's parent and uncle are red
+                uncle = node.parent.parent.right  # Sets uncle to the right uncle of  node
+                
+                # Case 1: If uncle is red, sets parent and uncle to black, and grandparent to red
+                if uncle.color == 'red':
+                    node.parent.color = 'black'
+                    uncle.color = 'black'
+                    node.parent.parent.color = 'red'
+                    node = node.parent.parent # Sets node to grandparent continue to check red black conflicts
+                else:
+                    # Case 2: If uncle is black and node is a right child
+                    # Sets node to parent and rotates left
+                    if node == node.parent.right:
+                        node = node.parent
+                        self._l_rotate(node)
 
-    def _insert_fixup(self, z):
-        while z.parent != self.NIL and z.parent.color == 'red':
-            # If the new node's parent is a left child
-            if z.parent == z.parent.parent.left: # If new node's parent and uncle are red
-                y = z.parent.parent.right  # Sets y to the right uncle of new node
-                if y.color == 'red':
-                    z.parent.color = 'black'
-                    y.color = 'black'
-                    z.parent.parent.color = 'red'
-                    z = z.parent.parent # Sets new node to grandparent continue to check red black conflicts
-                else:
-                    if z == z.parent.right: # If new node is right child
-                        z = z.parent
-                        self._l_rotate(z)
-                    z.parent.color = 'black' 
-                    z.parent.parent.color = 'red'
-                    self._r_rotate(z.parent.parent)
+                    # Sets parent to black and grandparent to red, then rotates right
+                    node.parent.color = 'black' 
+                    node.parent.parent.color = 'red'
+                    self._r_rotate(node.parent.parent)
             else: # If the new node's parent is a right child
-                y = z.parent.parent.left
-                print(f"left uncle y is null?")
-                print(y)
-                if y.color == 'red':
-                    z.parent.color = 'black'
-                    y.color = 'black'
-                    z.parent.parent.color = 'red'
-                    z = z.parent.parent
+                uncle = node.parent.parent.left # Sets uncle to the left uncle of new node
+
+                # Case 3: If uncle is red, sets parent and uncle to black, and grandparent to red
+                if uncle.color == 'red':
+                    node.parent.color = 'black'
+                    uncle.color = 'black'
+                    node.parent.parent.color = 'red'
+                    node = node.parent.parent
                 else:
-                    if z == z.parent.left:
-                        z = z.parent
-                        self._r_rotate(z)
-                    z.parent.color = 'black'
-                    z.parent.parent.color = 'red'
-                    self._l_rotate(z.parent.parent)
+
+                    # Case 4: If uncle is black and node is a left child
+                    # Sets node to parent and rotates right
+                    if node == node.parent.left:
+                        node = node.parent
+                        self._r_rotate(node)
+
+                    # Sets parent to black and grandparent to red, then rotates left
+                    node.parent.color = 'black'
+                    node.parent.parent.color = 'red'
+                    self._l_rotate(node.parent.parent)
         self.root.color = 'black'
 
+    # First and lasts methods coded by Gregor Umhoefer
     def first(self, x):
+
+        # Continuously moves left to find the leftmost node
         while x.left != self.NIL:
             x = x.left
         return x
     
     def last(self, x):
+
+        # Continuously moves right to find the rightmost node
         while x.right != self.NIL:
             x = x.right
         return x
@@ -132,13 +148,6 @@ class OleloTree:
     def successor(self, phrase):
         # Step 1: Search for the node with the matching phrase
         current = self.root
-        # while current != self.NIL:
-        #     if phrase < current.phrase_olelo: 
-        #         current = current.left
-        #     elif phrase > current.phrase_olelo:
-        #         current = current.right
-        #     else:
-        #         break  # Found the node
 
         while current != self.NIL:
             if phrase < current.phrase_olelo: 
