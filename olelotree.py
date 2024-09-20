@@ -280,10 +280,10 @@ class OleloTree:
         self._in_order(self.root)
 
     def _in_order(self, node):
+        stack = []
         if node != self.NIL:
             self._in_order(node.left)
-            print(node.olelo_wordlist)
-            print(node.english_wordlist)
+            print(node.phrase_olelo)
             self._in_order(node.right)
 
 

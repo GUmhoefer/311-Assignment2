@@ -50,4 +50,6 @@ class main():
 
     print(node.olelo_wordlist)
     print(node.english_wordlist)
+
+    tree.in_order()
 main()
