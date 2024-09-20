@@ -93,11 +93,58 @@ class OleloNode:
     
     def olelo_search(self, word):
         # Binary search for specific word
-        mid = len(self.olelo_wordlist) // 2
+        # Sets the start, middle, and end indices for the search array
         start = 0
         end = len(self.olelo_wordlist) - 1
 
-        
+        while start <= end: # Continues to run until the start index passes the end index
+            # Calculates the new middle index
+            mid = (start + end) // 2
+
+            # If the middle word is the search word
+            if word == self.olelo_wordlist[mid]:
+                return True
+
+            # If the search word comes after the middle word
+            # sets the start index to search the right half of list
+            elif word > self.olelo_wordlist[mid]:
+                start = mid + 1
+            
+            # If the search word comes before the middle,
+            # sets the end index to the search left half of list
+            else:
+                end = mid - 1
+
+        # Returns false if the word is not in list
+        return False
+
+        def english_search(self, word):
+        # Binary search for specific word
+        # Sets the start, middle, and end indices for the search array
+        start = 0
+        end = len(self.english_wordlist) - 1
+
+        while start <= end: # Continues to run until the start index passes the end index
+            # Calculates the new middle index
+            mid = (start + end) // 2
+
+            # If the middle word is the search word
+            if word == self.english_wordlist[mid]:
+                return True
+
+            # If the search word comes after the middle word
+            # sets the start index to search the right half of list
+            elif word > self.english_wordlist[mid]:
+                start = mid + 1
+            
+            # If the search word comes before the middle,
+            # sets the end index to the search left half of list
+            else:
+                end = mid - 1
+
+        # Returns false if the word is not in list
+        return False
+
         
 
  
