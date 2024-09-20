@@ -230,6 +230,8 @@ class OleloTree:
         
         return False # If a node is not found with the phrase, then it is not a member of the tree
 
+
+    # Mehua method coded by Brendan Kuwabara
     def MeHua(self, word):
 
         result = []
@@ -253,6 +255,7 @@ class OleloTree:
         return result
 
 
+    # WithWord method coded by Brendan Kuwabara
     def WithWord(self, word):
        
         result = []
