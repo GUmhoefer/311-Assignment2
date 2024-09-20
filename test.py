@@ -41,6 +41,13 @@ class main():
     print("Search for Hawaiian word: ka")
     print(node.olelo_search("ka"))
 
+    test = tree.MeHua("Waialua")
+    test2 = tree.WithWord("land")
+
+    print("MeHua and WithWord Test")
+    print(test)
+    print(test2)
+
     print(node.olelo_wordlist)
     print(node.english_wordlist)
 main()

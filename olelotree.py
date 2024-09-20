@@ -230,11 +230,51 @@ class OleloTree:
         
         return False # If a node is not found with the phrase, then it is not a member of the tree
 
-    def mehua(self, word):
-        pass
+    def MeHua(self, word):
 
-    def withword(self, word):
-        pass
+        result = []
+        stack = []  # Stack for tree traversal
+        current = self.root
+
+        # Traverse the tree in order
+        while stack or current != self.NIL:
+            if current != self.NIL:
+                stack.append(current)
+                current = current.left  # Move to the left child
+            else:
+                current = stack.pop()
+                
+                # Check if the word exists in the current node's olelo_wordlist
+                if current.olelo_search(word):
+                    result.append(current.phrase_olelo)
+
+                current = current.right  # Move to the right child
+
+        return result
+
+
+    def WithWord(self, word):
+       
+        result = []
+        stack = []  # Stack for iterative tree traversal
+        current = self.root
+
+        # Iterative in-order traversal
+        while stack or current != self.NIL:
+            if current != self.NIL:
+                stack.append(current)
+                current = current.left  # Move to the left child
+            else:
+                current = stack.pop()
+                
+                # Check if the word exists in the current node's english_wordlist
+                if current.english_search(word):
+                    result.append(current.phrase_english)
+
+                current = current.right  # Move to the right child
+
+        return result
+    
 
     def in_order(self):
         self._in_order(self.root)
