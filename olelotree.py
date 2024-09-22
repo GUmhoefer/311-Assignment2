@@ -280,12 +280,11 @@ class OleloTree:
 
         return result
     
-
+    # Recursive in order coded by Gregor Umhoefer
     def in_order(self):
         self._in_order(self.root)
 
     def _in_order(self, node):
-        stack = []
         if node != self.NIL:
             self._in_order(node.left)
             print(node.phrase_olelo)

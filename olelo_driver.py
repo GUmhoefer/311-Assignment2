@@ -1,5 +1,18 @@
 from olelotree import OleloTree as otree
 
+def menu():
+    print("Choose from the following options:\n")
+    print("1. Check if a phrase in ʻOlelo Hawaiʻi is in the database.")
+    print("2. Return the phrase that is first in alphabetical order.")
+    print("3. Return the phrase that is last in alphabetical order.")
+    print("4. Enter a phrase and return its alphabetical predecessor.")
+    print("5. Enter a phrase and return its alphabetical successor.")
+    print("6. Insert a phrase into the database.")
+    print("7. Me Hua: Enter a word in ʻOlelo Hawaiʻi and return all of the phrases that contain that word.")
+    print("9 With Word: Enter a word in English and return all of the phrases whose translations contain that word.")
+    print("0. Exit the program.\n")
+
+
 class OleloDriver():
     tree = otree()
     tree.insert("Waialua, ʻāina kū pālua i ka laʻi.", "Waialua, land that stands doubly becalmed.", "Ua ʻōlelo ʻia ʻo ia me ka mahalo iā Waialua, Oʻahu, kahi e ʻoluʻolu ai ka ʻāina a me ka noho mālie o ka poʻe.", "Said in admiration for Waialua, Oʻahu, where the weather wa usually pleasant and the life of the people tranquil.")
@@ -11,7 +24,16 @@ class OleloDriver():
     tree.insert("Hoʻokahi wale nō leo, ua lawa.", "One voice is enough.", "Ke kamaʻilio kekahi, pono nā mea a pau e hoʻolohe. Hiki ke manaʻo hoʻokahi wale nō mea hoʻomanaʻo pono.", "When one speaks, everyone should be listening. It can also mean that only one reminder is necessary.")
     tree.insert("He aliʻi ka ʻāina, he kauā ke kanaka.", "The land is a chief; man is its servant.", "ʻAʻole pono ka ʻāina i ke kanaka, akā pono ke kanaka i ka ʻāina a hana i mea e ola ai. Pono kākou e mālama i ka ʻāina.", "Land has no need for man, but man needs the land and works it for a livelihood. We have to take care of the land.")
 
-    tree.in_order()
+    user_choice = 1
+    menu()
+
+    while user_choice > 0 and user_choice < 10:
+        user_choice = int(input("Enter your preferred choice:"))
+
+
+
+
+
 
 
 
