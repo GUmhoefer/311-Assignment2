@@ -35,10 +35,10 @@ class OleloNode:
         self.color = color # Color for red black tree
 
     def __str__(self):
-        return f"Phrase in Olelo Hawaiʻi:\n{self.phrase_olelo}\n"
-        f"\n\nPhrase in English:\n{self.phrase_english}\n"
-        f"\n\nExplanation in Olelo Hawaiʻi:\n{self.exp_olelo}\n"
-        f"\n\nExplanation in English:\n{self.exp_english}\n"
+        return (f"\nPhrase in Olelo Hawaiʻi:\n{self.phrase_olelo}\n"
+        f"\nPhrase in English:\n{self.phrase_english}\n"
+        f"\nExplanation in Olelo Hawaiʻi:\n{self.exp_olelo}\n"
+        f"\nExplanation in English:\n{self.exp_english}\n")
 
 
     # Uses merge sort to sort words alphabetically

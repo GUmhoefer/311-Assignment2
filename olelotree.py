@@ -69,6 +69,7 @@ class OleloTree:
                 print("Duplicate phrase")
                 return
         
+        print("Phrase inserted.")
         # Sets the new node's parent to new parent node after traversing, or to
         # the root if the tree is empty.
         new_node.parent = y
@@ -132,14 +133,16 @@ class OleloTree:
         self.root.color = 'black'
 
     # First and lasts methods coded by Gregor Umhoefer
-    def first(self, x):
+    def first(self):
+        x = self.root
 
         # Continuously moves left to find the leftmost node
         while x.left != self.NIL:
             x = x.left
         return x
     
-    def last(self, x):
+    def last(self):
+        x = self.root
 
         # Continuously moves right to find the rightmost node
         while x.right != self.NIL:

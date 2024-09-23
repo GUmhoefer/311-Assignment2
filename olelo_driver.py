@@ -9,7 +9,7 @@ Author: Gregor Umhoefer
 from olelotree import OleloTree as otree
 
 def menu():
-    print("Choose from the following options:\n")
+    print("\nChoose from the following options:\n")
     print("1. Check if a phrase in ʻOlelo Hawaiʻi is in the database.")
     print("2. Return the phrase that is first in alphabetical order.")
     print("3. Return the phrase that is last in alphabetical order.")
@@ -17,7 +17,8 @@ def menu():
     print("5. Enter a phrase and return its alphabetical successor.")
     print("6. Insert a phrase into the database.")
     print("7. Me Hua: Enter a word in ʻOlelo Hawaiʻi and return all of the phrases that contain that word.")
-    print("9 With Word: Enter a word in English and return all of the phrases whose translations contain that word.")
+    print("8. With Word: Enter a word in English and return all of the phrases whose translations contain that word.")
+    print("9. Print all of the phrases in alphabetical order.")
     print("0. Exit the program.\n")
 
 
@@ -33,16 +34,74 @@ class OleloDriver():
     tree.insert("He aliʻi ka ʻāina, he kauā ke kanaka.", "The land is a chief; man is its servant.", "ʻAʻole pono ka ʻāina i ke kanaka, akā pono ke kanaka i ka ʻāina a hana i mea e ola ai. Pono kākou e mālama i ka ʻāina.", "Land has no need for man, but man needs the land and works it for a livelihood. We have to take care of the land.")
 
     user_choice = 1
-    menu()
 
-    while user_choice > 0 and user_choice < 10:
-        user_choice = int(input("Enter your preferred choice:"))
+    while user_choice != 0:
+        menu()
+        user_choice = int(input("Please choose an option: "))
 
+        if user_choice == 1:
+            phrase = input("Enter a phrase to search for: ")
+            if tree.is_member(phrase):
+                print("\nThis is a phrase in the database.\n")
+            else:
+                print("\nThis is not a phrase in the database.\n")
 
+        elif user_choice == 2:
+            print(tree.first())
 
+        elif user_choice == 3:
+            print(tree.last())
 
+        elif user_choice == 4:
+            phrase = input("Enter a phrase to return its predecessor: ")
+            print("\n")
+            print(tree.predecessor(phrase))
+        
+        elif user_choice == 5:
+            phrase = input("Enter a phrase to return its successor: ")
+            print("\n")
+            print(tree.successor(phrase))
 
+        elif user_choice == 6:
+            print("**Insert a new phrase into the database**")
+            print("_________________________________________")
+            olelo_phrase = input("Enter the phrase in ʻOlelo Hawaiʻi: ")
+            english_phrase = input("Enter the phrase in English: ")
+            olelo_exp = input("Enter the explanation in ʻOlelo Hawaiʻi: ")
+            english_exp = input("Enter the explanation in English: ")
+            print("\n")
+            tree.insert(olelo_phrase, english_phrase, olelo_exp, english_exp)
 
+        elif user_choice == 7:
+            word = input("Enter a word in ʻOlelo Hawaiʻi to return all of the phrases it occurs in: \n")
+            phrases = tree.MeHua(word)
+            print("\n")
+            if phrases:
+                for phrase in phrases:
+                    print(phrase)
+            else:
+                print("No ʻOlelo Hawaiʻi phrases contain this word.")
 
+        elif user_choice == 8:
+            word = input("Enter a word in English to return all of the phrases whose translations contain that word: \n")
+            phrases = tree.WithWord(word)
+            print("\n")
+            if phrases:
+                for phrase in phrases:
+                    print(phrase)
+            else:
+                print("No English phrases contain this word.")
+
+        elif user_choice == 9:
+            print("\n")
+            tree.in_order()
+
+        elif user_choice == 0:
+            print("Exiting the program.")
+            break
+
+        else:
+            print("Invalid selection, please try again.\n")
+            menu()
 
 OleloDriver()
