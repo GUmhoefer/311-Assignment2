@@ -13,8 +13,8 @@ def menu():
     print("1. Check if a phrase in ʻOlelo Hawaiʻi is in the database.")
     print("2. Return the phrase that is first in alphabetical order.")
     print("3. Return the phrase that is last in alphabetical order.")
-    print("4. Enter a phrase and return its alphabetical predecessor.")
-    print("5. Enter a phrase and return its alphabetical successor.")
+    print("4. Enter a phrase in ʻOlelo Hawaiʻi to return its alphabetical predecessor.")
+    print("5. Enter a phrase in ʻOlelo Hawaiʻi to return its alphabetical successor.")
     print("6. Insert a phrase into the database.")
     print("7. Me Hua: Enter a word in ʻOlelo Hawaiʻi and return all of the phrases that contain that word.")
     print("8. With Word: Enter a word in English and return all of the phrases whose translations contain that word.")
@@ -53,12 +53,12 @@ class OleloDriver():
             print(tree.last())
 
         elif user_choice == 4:
-            phrase = input("Enter a phrase to return its predecessor: ")
+            phrase = input("Enter a phrase in ʻOlelo Hawaiʻi to return its predecessor: ")
             print("\n")
             print(tree.predecessor(phrase))
         
         elif user_choice == 5:
-            phrase = input("Enter a phrase to return its successor: ")
+            phrase = input("Enter a phrase in ʻOlelo Hawaiʻi to return its successor: ")
             print("\n")
             print(tree.successor(phrase))
 
