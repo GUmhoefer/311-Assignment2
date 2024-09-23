@@ -5,7 +5,7 @@ Running the driver class brings up a menu of options for the OleloTree database.
 along with their translations in English, a description of their meaning in ʻOlelo Hawaiʻi, and a description in English, for a total of four fields.
 These phrases are alphabetised by the original ʻOlelo Hawaiʻi phrase. More phrases can be inserted.
 
-Note that the ʻokina character ʻ comes last in the alphabet, so phrases that begin with this character will be at the end of the database.
+* Note that the ʻokina character ʻ comes last in the alphabet, so phrases that begin with this character will be at the end of the database.
 
 The menu only takes numerical input, and has the 10 following options:
   1. Check if a phrase in ʻOlelo Hawaiʻi is in the database.
@@ -18,5 +18,7 @@ The menu only takes numerical input, and has the 10 following options:
   8. With Word: Enter a word in English and return all of the phrases whose translations contain that word.
   9. Print all of the phrases in alphabetical order.
   0. Exit the program.
+
+* For some reason the 0. option displays as 10. in the readme.
 
 Please contact gregoru@hawaii.edu with any questions on how to use the database.
