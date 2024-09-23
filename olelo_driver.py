@@ -1,3 +1,11 @@
+'''
+Driver for OleloTree class.
+Author: Gregor Umhoefer
+        This class first inserts nodes into an instance of the OleloTree class. It then displays a user menu and prompts the user to enter an option.
+        The user can check if a phrase is in the database, return the first alphabetical phrase, return the last alphabetical phrase, return the predecessor or 
+        successor of a phrase, insert a phrase, return all of the phrases that contain a word in ʻOlelo Hawaiʻi or in english, or exit the program.
+'''
+
 from olelotree import OleloTree as otree
 
 def menu():
