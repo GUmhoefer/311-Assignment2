@@ -85,7 +85,7 @@ class OleloTree:
     
         self._insert_fixup(new_node)
         
-    # _insert_fixup method coded buncle Gregor Umhoefer
+    # _insert_fixup method coded by Gregor Umhoefer
     def _insert_fixup(self, node):
         while node.parent != self.NIL and node.parent.color == 'red':
             # If the  node's parent is a left child
